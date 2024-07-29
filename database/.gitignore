@@ -1,1 +1,3 @@
 *.sqlite*
+/seeders/Api
+/seeders/UserSeeder.php

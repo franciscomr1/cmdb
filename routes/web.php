@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Laravel\Fortify\Fortify;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -21,4 +22,11 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+});
+
+Fortify::loginView(function () {
+    return Inertia::render('Custom/Auth/Login',[
+      //  'canResetPassword' => Route::has('password.request'),
+        'fortifyUsername'=>Fortify::username(),
+    ]);
 });
