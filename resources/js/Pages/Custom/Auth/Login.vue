@@ -35,7 +35,7 @@ const submit = () => {
 
 <template>
  <Head title="Log in" />
-    <div class="min-h-screen flex flex-col justify-center items-center px-4 sm:px-0 bg-light-bgcolor-level1 dark:bg-dark-bgcolor-level1">
+    <div class="min-h-screen flex flex-col justify-center items-center px-4 sm:px-0 bg-light-bgcolor-level2 dark:bg-dark-bgcolor-level4">
         <FormCard>
             <template #header>
                 <Logo class="mx-auto" />

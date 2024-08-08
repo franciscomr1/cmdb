@@ -1,3 +1,6 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import '@fortawesome/fontawesome-free/css/regular.css';
+@import '@fortawesome/fontawesome-free/css/solid.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,21 +9,50 @@
     display: none;
 }
 
+
+
 @layer components {
     .form {
-        @apply sm:max-w-md w-full p-6 bg-light-bgcolor-level2 dark:bg-dark-bgcolor-level2 rounded-lg shadow-md overflow-hidden space-y-2
+        @apply sm:max-w-md w-full p-6 bg-light-bgcolor-level1 dark:bg-dark-bgcolor-level3 rounded-lg shadow-md overflow-hidden space-y-2
     }
+
     .form__label {
-        @apply block font-medium text-light-text dark:text-dark-text
+        @apply block font-medium text-light-color-neutral-primary dark:text-dark-color-neutral-primary
     }
+
     .form__input {
-        @apply mt-1 block w-full rounded-md border-0 py-2 bg-light-bgcolor-level2 dark:bg-dark-bgcolor-level2 text-neutral-700 dark:text-neutral-300 ring-1 ring-inset
-         ring-neutral-300 dark:ring-neutral-600 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-light-accent  dark:focus:ring-dark-accent
+        @apply mt-1 block w-full rounded-md border-0 py-2 bg-light-bgcolor-level1 dark:bg-dark-bgcolor-level3 text-neutral-700 dark:text-neutral-300 ring-1 ring-inset ring-neutral-300 dark:ring-neutral-600 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-light-color-accent dark:focus:ring-dark-color-accent
     }
+
     .form__error {
         @apply text-sm text-red-600 dark:text-red-300
     }
+
     .form__button {
-        @apply w-full rounded-md dark:to-dark-text bg-light-button-active dark:bg-dark-button-active px-3 py-2 font-semibold text-white shadow-sm hover:bg-light-button-hover dark:hover:bg-dark-button-hover
+        @apply w-full py-2 bg-light-button-primary-background dark:bg-dark-button-primary-background rounded-md text-white dark:text-neutral-900 hover:bg-light-button-primary-hover dark:hover:bg-dark-button-primary-hover font-medium active:bg-light-button-primary-active dark:active:bg-dark-button-primary-active
+    }
+
+    .topbar {
+        @apply flex items-center justify-between h-16 bg-light-bgcolor-level1 dark:bg-dark-bgcolor-level3 px-4
+    }
+
+    .color-icon {
+        @apply stroke-light-color-neutral-secondary dark:stroke-dark-color-neutral-secondary
+    }
+
+    .color-icon-hover {
+        @apply stroke-light-color-neutral-primary dark:stroke-dark-color-neutral-primary
+    }
+
+    .sidebar__dropdown {
+        @apply flex items-center justify-between p-2 rounded-md space-x-2 text-sm hover:bg-light-bgcolor-level2 dark:hover:bg-dark-bgcolor-level2 text-light-color-neutral-secondary dark:text-dark-color-neutral-secondary hover:text-light-color-neutral-primary dark:hover:text-dark-color-neutral-primary text-left font-semibold tracking-wide
+    }
+
+    .sidebar__dropdown-link {
+        @apply text-left p-2 rounded-md space-x-2 text-sm hover:bg-light-bgcolor-level2 dark:hover:bg-dark-bgcolor-level2 text-light-color-neutral-secondary dark:text-dark-color-neutral-secondary hover:text-light-color-neutral-primary dark:hover:text-dark-color-neutral-primary
+    }
+
+    .table__td {
+        @apply h-12 text-sm text-light-color-neutral-secondary dark:text-dark-color-neutral-secondary
     }
 }

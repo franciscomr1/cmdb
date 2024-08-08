@@ -19,31 +19,49 @@ export default {
             },
             colors:{
                 light:{
-                    text:'#404040',
-                    accent :'#0A78D5',
+                    color:{
+                        neutral:{
+                            primary:'#262626',
+                            secondary:'#525252'
+
+                        },
+                        accent :'#0A78D5',
+                    },
                     bgcolor:{
-                        level1: '#F4F4F4',
-                        level2: '#FCFCFC',
-                        level3:'#EFEFEF',
+                        level1: '#FDFDFD',  //#F4F4F4
+                        level2: '#F4F4F4',   //#FCFCFC
+                        level3:'#ECECEC',  //#EFEFEF
+                        level4:'#DDDDDD',  //#EFEFEF
                     },
                     button:{
-                        background:'#0A78D5',
-                        hover:'#0C6FBE',
-                        active:'#1891F3'
+                        primary:{
+                            background:'#0A78D5',
+                            hover:'#0C6FBE',
+                            active:'#1891F3'
+                        }
                     }
                 },
                 dark:{
-                    text:'#d4d4d4',
-                    accent :'#6CB8F7',
+                    color:{
+                        neutral:{
+                            primary:'#e5e5e5',
+                            secondary:'#a3a3a3'
+
+                        },
+                        accent :'#6CB8F7',
+                    },
                     bgcolor:{
-                        level1: '#1D1D1D',
-                        level2: '#2E2E2E',
-                        level3:'#2E2E2E',
+                        level1:'#353535',   //#363636
+                        level2:'#2C2C2C',   //#363636
+                        level3: '#1F1F1F',  //#2E2E2E
+                        level4: '#111111',   //#1D1D1D
                     },
                     button:{
-                        background:'#6CB8F7',
-                        hover:'#3AA1F5',
-                        active:'#055A9D'
+                        primary:{
+                            background:'#6CB8F7',
+                            hover:'#3AA1F5',
+                            active:'#055A9D'
+                        }
                     }
                 }
             }

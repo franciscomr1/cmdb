@@ -17,8 +17,11 @@ const image = {
 </script>
 
 <template>
+
+
     <img
         :class="image[size] || 'h-24 w-auto'"
+        
         src="/images/logo.png"
         alt="Logo"
     />
