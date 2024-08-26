@@ -3,50 +3,49 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Company\CompanyRequest;
-use App\Models\Company\Company;
+use App\Http\Requests\Company\BranchRequest;
+use App\Models\Company\Branch;
 use Illuminate\Http\Request;
 use Laravel\Jetstream\Jetstream;
 use Exception;
 
-class CompanyController extends Controller
+class BranchController extends Controller
 {
     public function create(Request $request)
     {
-        $resource = new Company();
-
+        $resource = new Branch();
         return Jetstream::inertia()->render($request, 'Test', $resource::GetFormParamaters($resource->getAttributes()));
     }
 
-    public function store(CompanyRequest $request)
+    public function store(BranchRequest $request)
     {
         try {
-            $resource = new Company();
+            $resource = new Branch();
             $resource->fill($request->validated());
             $resource->save();
         } catch (Exception $e) {
             $e->getMessage();
         }
 
-        return redirect()->route('companies.create')->with('message', $resource->name . ' successfully created!');
+        return redirect()->route('branches.create')->with('message', $resource->name . ' successfully created!');
     }
 
     public function edit(Request $request, $id)
     {
-        $resource = Company::findOrFail($id);
+        $resource = Branch::findOrFail($id);
         return Jetstream::inertia()->render($request, 'Test', $resource::GetFormParamaters($resource->getAttributes()));
     }
 
-    public function update(CompanyRequest $request, $id)
+    public function update(BranchRequest $request, $id)
     {
         try {
-            $resource = Company::findOrFail($id);
+            $resource = Branch::findOrFail($id);
             $resource->fill($request->validated());
             $resource->save();
         } catch (Exception $e) {
             $e->getMessage();
         }
 
-        return redirect()->route('companies.edit', $resource->id)->with('message', $resource->name . ' successfully Updated!');
+        return redirect()->route('branches.edit', $resource->id)->with('message', $resource->name . ' successfully Updated!');
     }
 }

@@ -146,6 +146,10 @@ const logout = () => {
                                             Companies
                                         </DropdownLink>
 
+                                        <DropdownLink :href="route('branches.create')">
+                                            Branches
+                                        </DropdownLink>
+
                                         <DropdownLink v-if="$page.props.jetstream.hasApiFeatures" :href="route('api-tokens.index')">
                                             API Tokens
                                         </DropdownLink>

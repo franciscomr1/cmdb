@@ -11,6 +11,7 @@ trait GetFormParamaters
     {
         $modelAttributes =  Schema::getColumns(self::getTable());
         $modelFillable = self::getFillable();
+        //  dd($modelFillable);
         $columnPropierties = [];
         $formColumns = [];
 
@@ -27,11 +28,11 @@ trait GetFormParamaters
             foreach ($modelRelationships as $key => $value) {
                 $modelFillable = array_diff($modelFillable, array($key));
                 $columnPropierties[$key] = [
-                    'id' => $value,
-                    'label' =>  $value,
+                    'id' => $key,
+                    'label' =>  $key,
                     'type' => 'select',
-                    'propieties' => [
-                        'resource' => $value,
+                    'propierties' => [
+                        'data' => $value,
                         'required' => true
                     ]
                 ];
@@ -44,7 +45,7 @@ trait GetFormParamaters
                         'id' => $value['name'],
                         'label' =>  $value['name'],
                         'type' => 'input',
-                        'propieties' => [
+                        'propierties' => [
                             'type' => 'text',
                             'required' => !$value['nullable']
                         ]

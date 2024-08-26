@@ -9,6 +9,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
+import SelectInput from '@/Components/Custom/SelectInput.vue';
 
 const props = defineProps({
     title:{
@@ -40,7 +41,7 @@ onMounted(() => {
 
 const submit = () => {
     if (route().current() === props.resource + '.create') {
-        form.post(route('companies.store'));
+        form.post(route(props.resource +'.store'));
     } else if(route().current() === props.resource + '.edit'){
        form.patch(route('companies.update',route().params.id))
     }
@@ -62,18 +63,28 @@ const submit = () => {
         <div v-if="$page.props.flash.message" class="alert">
         {{ $page.props.flash.message }}
       </div>
-      
+
       <form @submit.prevent="submit">
           <div v-for="field in fieldPropierties">
-              <InputLabel :for="field.id" :value="field.label" />
-              <TextInput
-                  :id="field.id"
-                  v-model="form[field.id]"
-                  type="text"
-                  class="mt-1 block w-full"
-                  required
-              />
-              <InputError class="mt-2" :message="form.errors[field.id]" />
+            <div v-if="field.type === 'select'">
+                <InputLabel :for="field.id" :value="field.label" />
+                <SelectInput :id="field.id"
+                v-model="form[field.id]"
+                :data="field.propierties.data"
+                class="mt-1 block w-full"/>
+            </div>
+            
+            <div v-if="field.type === 'input'">
+                <InputLabel :for="field.id" :value="field.label" />
+                <TextInput
+                    :id="field.id"
+                    v-model="form[field.id]"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                />
+                <InputError class="mt-2" :message="form.errors[field.id]" />
+            </div>
           </div>
 
           <div class="flex items-center justify-end mt-4">

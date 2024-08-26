@@ -7,7 +7,7 @@ use App\Traits\Database\AddFieldsCreatedByAndUpdatedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model
+class Branch extends Model
 {
     use HasFactory, AddFieldsCreatedByAndUpdatedBy, GetFormParamaters;
 
@@ -17,11 +17,20 @@ class Company extends Model
      * @var array
      */
     protected $fillable = [
+        'company_id',
         'name',
-        'business_name',
         'address',
         'city',
         'state',
         'postal_code'
     ];
+
+
+    public function getRelationshipColumns(): array
+    {
+        return [
+            'company_id' => Company::select('id', 'name')->pluck('name', 'id')
+            // 'company_id' => ['1' => 'SAGAJI', '2' => 'region']
+        ];
+    }
 }

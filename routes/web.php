@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Company\BranchController;
 use App\Http\Controllers\Company\CompanyController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -33,24 +34,9 @@ Route::controller(CompanyController::class)->group(function () {
     Route::patch('companies/update/{id}', 'update')->name('companies.update');
 });
 
-Route::get('/test', function (Request $request) {
-    return Jetstream::inertia()->render($request, 'Test', [
-        'title' => 'Testing',
-        'fieldPropierties' => [
-            ['id' => 'name', 'label' => 'name', 'type' => 'text'],
-            ['id' => 'business_name', 'label' => 'business_name', 'type' => 'text'],
-            ['id' => 'address', 'label' => 'address', 'type' => 'text'],
-            ['id' => 'city', 'label' => 'city', 'type' => 'text'],
-            ['id' => 'state', 'label' => 'state', 'type' => 'text'],
-            ['id' => 'postal_code', 'label' => 'postal_code', 'type' => 'text'],
-        ],
-        'formFields' => [
-            'name' => null,
-            'business_name' => null,
-            'address' => null,
-            'city' => null,
-            'state' => null,
-            'postal_code' => null
-        ]
-    ]);
-})->name('page.test');
+Route::controller(BranchController::class)->group(function () {
+    Route::get('branches/create', 'create')->name('branches.create');
+    Route::get('branches/edit/{id}', 'edit')->name('branches.edit');
+    Route::post('branches', 'store')->name('branches.store');
+    Route::patch('branches/update/{id}', 'update')->name('branches.update');
+});
